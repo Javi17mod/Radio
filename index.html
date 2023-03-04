@@ -225,8 +225,58 @@
                     $('html, body').animate({ scrollTop: 0 }, 300);
                 });
                 </script>
-                <iframe src="https://zeno.fm/player/javi17mod" width="auto" height="600" frameborder="0" scrolling="no"></iframe><a href="https://zeno.fm/" target="_blank" style="display: block; font-size: 0.9em; line-height: 10px;"></a>
-    </div>
+                <style>
+                  div#mp3_player{
+                      width: 500px;
+                      height: 180px;
+                      background: #000;
+                      padding: 5px;
+                      margin: 50px auto;
+                    }
+                    
+                    div#mp3_player > div > audio{
+                        width: 500px;
+                        background: #000;
+                        float: left;
+                    }
+                    
+                    div#mp3_player > canvas {
+                        width:500px;
+                        height: 150px;
+                        background: #002D3C;
+                        float: left;
+                    }
+                </style>
+                
+                <script type="text/javascript">
+                    var audio = new Audio();
+                    audio.src = "https://stream-57.zeno.fm/ivarge8h6egvv?zs=2Rf8KwPBQE23E1Li6p_2Zg&aw_0_req_lsid=915260e2541aaa9a3a52641030eb756e&acu-uid=743601003659&dyn-uid=&an-uid=7172750696595090428&mm-uid=899b63ed-26ee-4c00-84ed-2215e29e8a36&triton-uid=cookie%3Ac96c88dc-805f-44d6-b532-afbba55d00a7&amb-uid=3057931967205922225";
+                    audio.controls = true
+                    audio.loop = true;
+                    audio.autoplay = false
+                    
+                    var canvas, ctx, source, context, analyser, fbc_array, bars, bar_x, bar_width, bar_height;
+                    
+                    window.addEventListener("load", initMp3Player, false;
+                                            
+                    function initMp3Player(){
+                        document.getElementById('audio_box').appendChild(audio);
+                        
+                        context = new AudioContext();
+                        analyser = context.createAnalyser();
+                        
+                        canvas = document.getElementById('analyser_render');
+                        
+                        ctx = canvas.getContext('2d');
+                        
+                        source = context.createMediaElementSource(audio);
+                        source.connect(analyser.connect(context.destination);
+                        frameLooper
+                    }
+                </script>
+      <div id="mp3_player">
+          <canvas id="analyser_render"></canvas> 
+          <div id="audio_box"></div>
     <div class="inner">
         <div
     data-section-name="footer"
